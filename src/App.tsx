@@ -2,24 +2,81 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AppProvider, useApp } from "./context/AppContext";
+
+// Pages
+import Onboarding from "./pages/Onboarding";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import MealPlanner from "./pages/MealPlanner";
+import Restaurants from "./pages/Restaurants";
+import Cart from "./pages/Cart";
+import Tracking from "./pages/Tracking";
+import Orders from "./pages/Orders";
+import Groceries from "./pages/Groceries";
+import Medical from "./pages/Medical";
+import Vehicle from "./pages/Vehicle";
+import Profile from "./pages/Profile";
+import Explore from "./pages/Explore";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+function AppRoutes() {
+  const { isOnboarded, isLoggedIn } = useApp();
+
+  return (
+    <Routes>
+      {/* Redirect based on auth state */}
+      <Route
+        path="/"
+        element={
+          !isOnboarded ? (
+            <Navigate to="/onboarding" replace />
+          ) : !isLoggedIn ? (
+            <Navigate to="/login" replace />
+          ) : (
+            <Navigate to="/home" replace />
+          )
+        }
+      />
+
+      {/* Auth Routes */}
+      <Route path="/onboarding" element={<Onboarding />} />
+      <Route path="/login" element={<Login />} />
+
+      {/* Main App Routes */}
+      <Route path="/home" element={<Home />} />
+      <Route path="/explore" element={<Explore />} />
+      <Route path="/meal-planner" element={<MealPlanner />} />
+      <Route path="/restaurants" element={<Restaurants />} />
+      <Route path="/homemade" element={<Restaurants />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/tracking" element={<Tracking />} />
+      <Route path="/orders" element={<Orders />} />
+      <Route path="/groceries" element={<Groceries />} />
+      <Route path="/medical" element={<Medical />} />
+      <Route path="/vehicle" element={<Vehicle />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/subscriptions" element={<Orders />} />
+
+      {/* Catch-all */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AppProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </AppProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
