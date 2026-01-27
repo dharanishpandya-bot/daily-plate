@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import MealPlanner from "./pages/MealPlanner";
 import Restaurants from "./pages/Restaurants";
+import RestaurantDetail from "./pages/RestaurantDetail";
 import Cart from "./pages/Cart";
 import Tracking from "./pages/Tracking";
 import Orders from "./pages/Orders";
@@ -51,6 +52,7 @@ function AppRoutes() {
       <Route path="/explore" element={<Explore />} />
       <Route path="/meal-planner" element={<MealPlanner />} />
       <Route path="/restaurants" element={<Restaurants />} />
+      <Route path="/restaurant/:id" element={<RestaurantDetail />} />
       <Route path="/homemade" element={<Restaurants />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/tracking" element={<Tracking />} />
