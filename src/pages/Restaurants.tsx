@@ -7,74 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { ArrowLeft, Search, SlidersHorizontal, Star, Clock, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
-const restaurants = [
-  {
-    id: '1',
-    name: 'Sharma Kitchen',
-    image: '🍛',
-    rating: 4.5,
-    reviewCount: 234,
-    cuisines: ['North Indian', 'Thali'],
-    deliveryTime: '20-25 min',
-    deliveryFee: 20,
-    distance: '1.2 km',
-    isHomeMade: true,
-    priceRange: 1,
-  },
-  {
-    id: '2',
-    name: 'Fresh Bites Cafe',
-    image: '🥗',
-    rating: 4.3,
-    reviewCount: 189,
-    cuisines: ['Healthy', 'Salads', 'Wraps'],
-    deliveryTime: '25-30 min',
-    deliveryFee: 30,
-    distance: '2.1 km',
-    isHomeMade: false,
-    priceRange: 2,
-  },
-  {
-    id: '3',
-    name: 'Mama\'s Home Food',
-    image: '🍲',
-    rating: 4.8,
-    reviewCount: 456,
-    cuisines: ['Home Style', 'Comfort Food'],
-    deliveryTime: '30-35 min',
-    deliveryFee: 15,
-    distance: '0.8 km',
-    isHomeMade: true,
-    priceRange: 1,
-  },
-  {
-    id: '4',
-    name: 'Biryani House',
-    image: '🍚',
-    rating: 4.6,
-    reviewCount: 567,
-    cuisines: ['Biryani', 'Mughlai'],
-    deliveryTime: '35-40 min',
-    deliveryFee: 25,
-    distance: '3.2 km',
-    isHomeMade: false,
-    priceRange: 2,
-  },
-  {
-    id: '5',
-    name: 'South Express',
-    image: '🥞',
-    rating: 4.4,
-    reviewCount: 321,
-    cuisines: ['South Indian', 'Dosa'],
-    deliveryTime: '20-25 min',
-    deliveryFee: 20,
-    distance: '1.5 km',
-    isHomeMade: false,
-    priceRange: 1,
-  },
-];
+import { restaurantsData } from '@/data/restaurants';
 
 const filters = ['All', 'Home-Made', 'Budget', 'Top Rated', 'Fast Delivery'];
 
@@ -83,7 +16,7 @@ export default function Restaurants() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
 
-  const filteredRestaurants = restaurants.filter(r => {
+  const filteredRestaurants = restaurantsData.filter(r => {
     if (searchQuery && !r.name.toLowerCase().includes(searchQuery.toLowerCase())) {
       return false;
     }
@@ -152,7 +85,7 @@ export default function Restaurants() {
           >
             <div className="flex">
               <div className="w-28 h-28 bg-muted flex items-center justify-center text-5xl">
-                {restaurant.image}
+                {restaurant.emoji}
               </div>
               <div className="flex-1 p-4">
                 <div className="flex items-start justify-between mb-1">
