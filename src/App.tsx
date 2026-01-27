@@ -16,6 +16,7 @@ import Cart from "./pages/Cart";
 import Tracking from "./pages/Tracking";
 import Orders from "./pages/Orders";
 import Groceries from "./pages/Groceries";
+import GroceryShopDetail from "./pages/GroceryShopDetail";
 import Medical from "./pages/Medical";
 import Vehicle from "./pages/Vehicle";
 import Profile from "./pages/Profile";
@@ -58,6 +59,7 @@ function AppRoutes() {
       <Route path="/tracking" element={<Tracking />} />
       <Route path="/orders" element={<Orders />} />
       <Route path="/groceries" element={<Groceries />} />
+      <Route path="/grocery/:id" element={<GroceryShopDetail />} />
       <Route path="/medical" element={<Medical />} />
       <Route path="/vehicle" element={<Vehicle />} />
       <Route path="/profile" element={<Profile />} />
