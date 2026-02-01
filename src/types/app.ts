@@ -101,3 +101,55 @@ export interface VehicleOption {
   eta: string;
   capacity: string;
 }
+
+// Profile Module Types
+export interface Address {
+  id: string;
+  label: 'home' | 'work' | 'other';
+  customLabel?: string;
+  fullAddress: string;
+  landmark?: string;
+  city: string;
+  pincode: string;
+  isDefault: boolean;
+}
+
+export interface PaymentMethod {
+  id: string;
+  type: 'upi' | 'card' | 'wallet' | 'cod';
+  name: string;
+  details: string; // masked card number or UPI ID
+  isDefault: boolean;
+  icon?: string;
+}
+
+export interface NotificationSettings {
+  orderUpdates: boolean;
+  offers: boolean;
+  reminders: boolean;
+  pushEnabled: boolean;
+  sound: boolean;
+  vibration: boolean;
+}
+
+export interface AppSettings {
+  language: string;
+  darkMode: boolean;
+  privacyMode: boolean;
+}
+
+export interface SupportTicket {
+  id: string;
+  category: string;
+  message: string;
+  orderId?: string;
+  status: 'open' | 'in_progress' | 'resolved';
+  createdAt: Date;
+}
+
+export interface FAQ {
+  id: string;
+  question: string;
+  answer: string;
+  category: string;
+}
