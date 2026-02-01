@@ -20,6 +20,13 @@ import GroceryShopDetail from "./pages/GroceryShopDetail";
 import Medical from "./pages/Medical";
 import Vehicle from "./pages/Vehicle";
 import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
+import Addresses from "./pages/Addresses";
+import Payments from "./pages/Payments";
+import Notifications from "./pages/Notifications";
+import BudgetSettings from "./pages/BudgetSettings";
+import HelpSupport from "./pages/HelpSupport";
+import AppSettingsPage from "./pages/AppSettingsPage";
 import Explore from "./pages/Explore";
 import NotFound from "./pages/NotFound";
 
@@ -62,7 +69,16 @@ function AppRoutes() {
       <Route path="/grocery/:id" element={<GroceryShopDetail />} />
       <Route path="/medical" element={<Medical />} />
       <Route path="/vehicle" element={<Vehicle />} />
+      
+      {/* Profile Routes */}
       <Route path="/profile" element={<Profile />} />
+      <Route path="/edit-profile" element={<EditProfile />} />
+      <Route path="/addresses" element={<Addresses />} />
+      <Route path="/payments" element={<Payments />} />
+      <Route path="/notifications" element={<Notifications />} />
+      <Route path="/budget" element={<BudgetSettings />} />
+      <Route path="/help" element={<HelpSupport />} />
+      <Route path="/settings" element={<AppSettingsPage />} />
       <Route path="/subscriptions" element={<Orders />} />
 
       {/* Catch-all */}
